@@ -1,7 +1,14 @@
-function Article() {
+function Article(props) {
   return (
     <>
-      <div>Tes</div>
+      <div>🚀 Name: {props.name}</div>
+      <div>⭐ Status: {props.status}</div>
+      <div>
+        🕶️ Jobdesc:
+        {props.jobdesc.map((e) => {
+          return <div>- {e}</div>;
+        })}
+      </div>
     </>
   );
 }
