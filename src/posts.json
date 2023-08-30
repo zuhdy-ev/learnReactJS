@@ -1,0 +1,17 @@
+[
+  {
+    "title": "Tutorial belajar ReactJs lengkap",
+    "tags": ["reactjs", "frontend"],
+    "date": "2020-01-01"
+  },
+  {
+    "title": "Meningkatkan performa website dengan ReactJs",
+    "tags": ["reactjs", "frontend"],
+    "date": "2020-01-02"
+  },
+  {
+    "title": "Cara menggunakan chakra-ui di ReactJs",
+    "tags": ["reactjs", "css", "ui/ux"],
+    "date": "2020-01-03"
+  }
+]
