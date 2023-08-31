@@ -5,16 +5,6 @@ function Article(props) {
       <small>
         📅 Date: {props.date}, 🏷️ Tags: {props.tags.join(", ")}
       </small>
-      {/* <small>
-        📅 Date: {props.date}, Tags: {props.tags.join(", ")}
-      </small> */}
-      {/* <div>⭐ Status: {props.status}</div>
-      <div>
-        🕶️ Jobdesc:
-        {props.jobdesc.map((e) => {
-          return <div>- {e}</div>;
-        })}
-      </div> */}
     </>
   );
 }
