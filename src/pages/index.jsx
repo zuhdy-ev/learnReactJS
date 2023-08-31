@@ -1,25 +1,29 @@
 import { useState } from "react";
-import posts from "../posts.json";
+import postsData from "../posts.json";
 import Article from "../components/Article";
+import Search from "../components/Search";
 
 function Homepage() {
-  const [search, setSearch] = useState("");
+  const [posts, setPosts] = useState([]);
 
-  const changeSearch = (event) => {
-    // console.log(event.target.value);
-    setSearch(event.target.value);
+  const onSearchChange = (value) => {
+    console.log(value);
+    const filteredPosts = postsData.filter((item) =>
+      item.title.toLowerCase().includes(value.toLowerCase())
+    );
+    setPosts(filteredPosts);
   };
 
   return (
     <>
       <h1>Simple Blog</h1>
-      <div>
-        Cari Artikel : <input onChange={changeSearch}></input>
-      </div>
-      <small>Ditemukan 0 data dengan kata kunci: {search}</small>
-      {posts.map(({ title, tags, date }, index) => (
+      <Search onSearchChange={onSearchChange} />
+      {/* {posts.map(({ title, tags, date }, index) => (
         // <Article title={title} tags={tags} date={date} />
         <Article {...{ title, tags, date }} key={index} /> // same as above, this called "spread attributes"
+      ))} */}
+      {posts.map((props, index) => (
+        <Article {...props} key={index} /> // same as above, but we don't know what props are passed in this case
       ))}
     </>
   );
