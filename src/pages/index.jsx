@@ -4,7 +4,7 @@ import Article from "../components/Article";
 import Search from "../components/Search";
 
 function Homepage() {
-  const [posts, setPosts] = useState([]);
+  const [posts, setPosts] = useState(postsData);
 
   const onSearchChange = (value) => {
     console.log(value);
