@@ -7,6 +7,7 @@ import Search from "../components/Search";
 function Homepage() {
   const [posts, setPosts] = useState(postsData);
   const [totalPosts, setTotalPosts] = useState(0);
+  const [externalPost, setExternalPost] = useState([]);
 
   const onSearchChange = (value) => {
     console.log(value);
@@ -18,21 +19,31 @@ function Homepage() {
   };
 
   // componentDidMount
-  useEffect(() => {
-    console.log("render");
-  }, []);
+  // useEffect(() => {
+  //   console.log("render");
+  // }, []);
 
   // componentDidUpdate
-  useEffect(() => {
-    console.log("posts changed");
-  }, [posts]);
+  // useEffect(() => {
+  //   console.log("posts changed");
+  // }, [posts]);
 
   // componentWillUnmount
+  // useEffect(() => {
+  //   return () => {
+  //     console.log("component will unmount");
+  //   };
+  // }, []);
+
   useEffect(() => {
-    return () => {
-      console.log("component will unmount");
-    };
-  }, []);
+    fetch("https://jsonplaceholder.typicode.com/todos")
+      .then((response) => response.json())
+      .then((json) => setExternalPost(json));
+  }, [posts]);
+
+  useEffect(() => {
+    console.log("posts changed");
+  });
 
   return (
     <>
@@ -44,6 +55,10 @@ function Homepage() {
       ))} */}
       {posts.map((props, index) => (
         <Article {...props} key={index} /> // same as above, but we don't know what props are passed in this case
+      ))}
+      <hr />
+      {externalPost.map((items, index) => (
+        <div key={index}>- {items.title}</div>
       ))}
     </>
   );
