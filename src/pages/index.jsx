@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useEffect } from "react";
 import postsData from "../posts.json";
 import Article from "../components/Article";
 import Search from "../components/Search";
@@ -15,6 +16,23 @@ function Homepage() {
     setPosts(filteredPosts);
     setTotalPosts(filteredPosts.length);
   };
+
+  // componentDidMount
+  useEffect(() => {
+    console.log("render");
+  }, []);
+
+  // componentDidUpdate
+  useEffect(() => {
+    console.log("posts changed");
+  }, [posts]);
+
+  // componentWillUnmount
+  useEffect(() => {
+    return () => {
+      console.log("component will unmount");
+    };
+  }, []);
 
   return (
     <>
